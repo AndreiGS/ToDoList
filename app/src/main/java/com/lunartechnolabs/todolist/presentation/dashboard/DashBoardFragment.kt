@@ -53,7 +53,7 @@ class DashBoardFragment : Fragment() , TaskAdapter.OnItemClickListener{
         binding.floatingActionButton.setOnClickListener {
             val task = Task(title = "", priority = "", detail = "", taskDate = "", taskTime = "")
             val action = DashBoardFragmentDirections.actionDashBoardFragmentToEditOrAddFragment(task,false)
-            findNavController().navigate(action)
+            // TODO: Navigate to add fragment
         }
         super.onViewCreated(view, savedInstanceState)
     }
@@ -103,7 +103,7 @@ class DashBoardFragment : Fragment() , TaskAdapter.OnItemClickListener{
     //2. Button click
     override fun btnClick(view: View, position: Int, task: Task) {
         //delete article
-        viewModel.deleteArticle(task)
+        // TODO remove task from viewModel
         taskAdapter.notifyItemRemoved(position)
     }
 
@@ -115,7 +115,7 @@ class DashBoardFragment : Fragment() , TaskAdapter.OnItemClickListener{
     //open view fragment
     private fun openViewFragment(task: Task) {
         val action = DashBoardFragmentDirections.actionDashBoardFragmentToViewTask(task)
-        findNavController().navigate(action)
+        // TODO navigate to view fragment
     }
 
     //open update Fragment

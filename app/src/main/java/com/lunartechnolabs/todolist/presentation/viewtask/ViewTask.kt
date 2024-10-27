@@ -1,6 +1,7 @@
 package com.lunartechnolabs.todolist.presentation.viewtask
 
 import android.annotation.SuppressLint
+import android.app.Fragment
 import android.graphics.Color
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -10,7 +11,7 @@ import androidx.navigation.fragment.navArgs
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import com.lunartechnolabs.todolist.databinding.FragmentViewTaskBinding
 
-class ViewTask : BottomSheetDialogFragment() {
+class ViewTask : Fragment { // TODO: Bottom Sheet
 
     private  var _binding: FragmentViewTaskBinding ?= null
     private val binding get() = _binding!!

@@ -57,10 +57,8 @@ class EditOrAddFragment : Fragment() {
         binding.addArticleBtn.text = "Update Task"
             binding.apply {
                 args.taskData.let {
+                    // TODO: set the initial data to be updated (HINT: use it. to get your values) -> title, detail, taskTime, taskDate
                     edtTitle.setText(it.title)
-                    edtBody.setText(it.detail)
-                    edtTime.setText(it.taskTime)
-                    edtDate.setText(it.taskDate)
 
                     when (it.priority) {
                         "Urgent" -> {
@@ -77,19 +75,20 @@ class EditOrAddFragment : Fragment() {
 
             }
         binding.addArticleBtn.setOnClickListener {
-        if (validation()) {
-            val selectedOption: Int = binding.radioGroup.checkedRadioButtonId
-            radioButton = view?.findViewById(selectedOption)!!
+            if (validation()) {
+                val selectedOption: Int = binding.radioGroup.checkedRadioButtonId
+                radioButton = view?.findViewById(selectedOption)!!
+                // TODO: set the taskDate -> find the id yourself (in the xml)
                 val task = Task(
                     id = args.taskData.id,
                     title = binding.edtTitle.text.toString(),
                     detail = binding.edtBody.text.toString(),
                     priority = radioButton.text.toString(),
-                    taskDate = binding.edtDate.text.toString(),
+                    taskDate = "",
                     taskTime = binding.edtTime.text.toString()
                 )
                 viewModel.updateArticle(task)
-                findNavController().popBackStack()
+                // TODO: use the nav controller to go back (pop the stack)
             }
         }
     }
@@ -102,15 +101,16 @@ class EditOrAddFragment : Fragment() {
                 val selectedOption: Int = binding.radioGroup.checkedRadioButtonId
 
                 radioButton = view?.findViewById(selectedOption)!!
+                // TODO: set the taskDate -> find the id yourself (in the xml)
                 val task = Task(
                     title = binding.edtTitle.text.toString(),
                     detail = binding.edtBody.text.toString(),
                     priority = radioButton.text.toString(),
-                    taskDate = binding.edtDate.text.toString(),
+                    taskDate = "",
                     taskTime = binding.edtTime.text.toString()
                 )
                 viewModel.addArticle(task)
-                findNavController().popBackStack()
+                // TODO: use the nav controller to go back (pop the stack)
             }
         }
     }
